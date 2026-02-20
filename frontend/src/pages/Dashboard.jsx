@@ -10,7 +10,7 @@ export default function Dashboard() {
 
     const checkBalance = async () => {
         try {
-            const res = await axios.get('http://localhost:5000/balance', { withCredentials: true });
+            const res = await axios.get(`${import.meta.env.VITE_API_URL}/balance`, { withCredentials: true });
             setBalance(res.data.balance);
             setError('');
 
@@ -30,7 +30,7 @@ export default function Dashboard() {
 
     const logout = async () => {
         try {
-            await axios.post('http://localhost:5000/logout', {}, { withCredentials: true });
+            await axios.post(`${import.meta.env.VITE_API_URL}/logout`, {}, { withCredentials: true });
             navigate('/login');
         } catch (e) {
             navigate('/login');
